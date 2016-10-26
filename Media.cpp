@@ -8,22 +8,14 @@
 #include <vector>
 #include <iterator>
 #include <iomanip>
+#include "Media.h"
 
 using namespace std;
 
-
-class Media{
-  int rating = -16;
-public:
-  int getRating(){return  rating;}
-  void setRating(int){}
-  
-};
-
-int getRating(){
+int Media::getRating(){
   return rating;
 }
 
-void setRating(int r){
+void Media::setRating(int r){
   rating = r;
 }

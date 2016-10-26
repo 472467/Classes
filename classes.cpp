@@ -6,8 +6,8 @@ INPUTS VIDEO GAMES MOVIES AND SONGS*/
 
 int main(){
   system("clear");//initially clears command line
-  Media m = new Media();
-  cout << m.getRating();
+  Media* m = new Media();
+  cout << m->getRating();
   
   vector <STUDENT*>* v = new vector<STUDENT*>;//pointer of pointers
   char input[30];
