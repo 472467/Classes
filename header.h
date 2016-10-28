@@ -19,3 +19,6 @@ struct STUDENT{
 int translateMove(char* in, vector<STUDENT*>* v);
 
 #include "Media.h"
+#include "VideoGame.h"
+#include "Song.h"
+#include "Movie.h"

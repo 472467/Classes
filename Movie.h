@@ -1,17 +1,7 @@
-#include <iostream>
-#include <string>
-#include <istream>
-#include <sstream>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <vector>
-#include <iterator>
-#include <iomanip>
-#ifndef MEDIA_H
-#define MEDIA_H
+#ifndef MOVIE_H
+#define MOVIE_H
 
-class Media{
+class Movie: public Media{
 	
 	public:
 		int getRating();
@@ -31,14 +21,14 @@ class Media{
 		int getID();
 		
 	private:
-		int id = 0;
+		int id = 3;
 		int rating = 0; // x/10
 		int duration = 0; //seconds
-		char* publisher = new char[150];
-		char* title =new char[200];
-		char* artist =new char[150];
+		char* publisher [150];
+		char* title [200];
+		char* artist [150];
 		int year = 1970;
-		char* director = new char[150];
+		char* director [150];
 	
 };
 #endif

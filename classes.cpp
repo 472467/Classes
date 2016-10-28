@@ -7,7 +7,13 @@ INPUTS VIDEO GAMES MOVIES AND SONGS*/
 int main(){
   system("clear");//initially clears command line
   Media* m = new Media();
-  cout << m->getRating();
+  VideoGame* vid = new VideoGame();
+  Song* s = new Song();
+  Movie* mov = new Movie();
+  cout << m->getID() << endl;
+  cout << vid->getID() << endl;
+  cout << s->getID() << endl;
+  cout << mov->getID() << endl;
   
   vector <STUDENT*>* v = new vector<STUDENT*>;//pointer of pointers
   char input[30];
@@ -23,9 +29,11 @@ int main(){
 
   }
   
-  
 }
 
 int translateMove(char* in, vector<STUDENT*>* v){
-  return 0;
+  if(strcasecmp(in, "exit") == 1){
+      
+      return(1);
+  }
 }
