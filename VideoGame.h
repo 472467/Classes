@@ -4,6 +4,7 @@
 class VideoGame:public Media{
 	
 	public:
+		VideoGame();
 		int getRating();
 		void setRating(int);
 		void setDuration(int);
@@ -21,14 +22,14 @@ class VideoGame:public Media{
 		int getID();
 		
 	private:
-		int id = 1;
-		int rating = 0; // x/10
-		int duration = 0; //seconds
-		char* publisher [150];
-		char* title [200];
-		char* artist [150];
-		int year = 1970;
-		char* director [150];
+		int id;
+		int rating; // x/10
+		int duration; //seconds
+		char* publisher;
+		char* title;
+		char* artist;
+		int year;
+		char* director;
 	
 };
 #endif

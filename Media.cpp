@@ -1,7 +1,15 @@
 #include "Media.h"
 
-using namespace std;
-
+Media::Media(){
+	int id = 0;
+	int rating = 0; // x/10
+	int duration = 0; //seconds
+	int year = 1970;
+	char* publisher = new char[150];
+	char* title =new char[200];
+	char* artist =new char[150];
+	char* director = new char[150];
+}
 int Media::getRating(){
   return rating;
 }

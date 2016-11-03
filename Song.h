@@ -4,6 +4,7 @@
 class Song:public Media{
 	
 	public:
+		Song();
 		int getRating();
 		void setRating(int);
 		void setDuration(int);
@@ -21,14 +22,14 @@ class Song:public Media{
 		int getID();
 		
 	private:
-		int id = 2;//determines which class is which
-		int rating = 0; // x/10
-		int duration = 0; //seconds
-		char* publisher [150];
-		char* title [200];
-		char* artist [150];
-		int year = 1970;
-		char* director [150];
+		int id;//determines which class is which
+		int rating; // x/10
+		int duration; //seconds
+		char* publisher;
+		char* title;
+		char* artist;
+		int year;
+		char* director;
 	
 };
 #endif

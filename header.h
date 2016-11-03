@@ -9,16 +9,14 @@
 #include <iterator>
 #include <iomanip>
 #pragma once
+#pragma GCC diagnostic ignored "-w"
 
 using namespace std;
-
-struct STUDENT{
-	
-};
-
-int translateMove(char* in, vector<STUDENT*>* v);
 
 #include "Media.h"
 #include "VideoGame.h"
 #include "Song.h"
 #include "Movie.h"
+
+int translateMove(char* in, vector<Media*>* v);
+

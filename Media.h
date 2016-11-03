@@ -8,12 +8,14 @@
 #include <vector>
 #include <iterator>
 #include <iomanip>
+#pragma warning
 #ifndef MEDIA_H
 #define MEDIA_H
 
 class Media{
 	
 	public:
+		Media();
 		int getRating();
 		void setRating(int);
 		void setDuration(int);
@@ -31,14 +33,14 @@ class Media{
 		int getID();
 		
 	private:
-		int id = 0;
-		int rating = 0; // x/10
-		int duration = 0; //seconds
-		char* publisher = new char[150];
-		char* title =new char[200];
-		char* artist =new char[150];
-		int year = 1970;
-		char* director = new char[150];
+		int id;
+		int rating; // x/10
+		int duration; //seconds
+		char* publisher;
+		char* title;
+		char* artist;
+		int year;
+		char* director;
 	
 };
 #endif
