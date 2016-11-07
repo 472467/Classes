@@ -35,7 +35,7 @@ class Media{
 	private:
 		int id;
 		int rating; // x/10
-		int duration; //seconds
+		int duration; //minutes
 		char* publisher;
 		char* title;
 		char* artist;
