@@ -31,6 +31,7 @@ class Media{
 		char* getDirector();
 		void setDirector(char*);
 		int getID();
+		void setID(int);
 		
 	private:
 		int id;

@@ -54,5 +54,8 @@ void Media::setDirector(char* d){
   director = d;
 }
 int Media::getID(){
-  return 0;
+  return id;
+}
+void Media::setID(int i){
+  id = i;
 }

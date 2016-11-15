@@ -14,15 +14,15 @@
 using namespace std;
 
 VideoGame::VideoGame(){
-	int id = 1;
-	int rating = 0; // x/10
-	int duration = 0; //seconds
-	int year = 1970;
-	char* publisher = new char[150];
-	char* title =new char[200];
-	char* artist =new char[150];
-	char* director = new char[150];
+	id = 1;
+	rating = 0; // x/10
+	duration = 0; //seconds
+	year = 1970;
+	publisher = new char[150];
+	title =new char[200];
+	artist =new char[150];
+	director = new char[150];
 }
 int VideoGame::getID(){
-	return 1;
+	return id;
 }
