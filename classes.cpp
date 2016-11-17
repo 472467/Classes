@@ -1,5 +1,7 @@
 /* EXCELLENT PROGRAM WRITTEN BY BRENDAN
 THIS PROGRAM MAKES A DATABASE OF MEDIA 
+DNLKASDNLKDSANLKDASNLKDASLNK!
+WATCH OUT FOR SEGMENTATION FAULTS
 INPUTS VIDEO GAMES MOVIES AND SONGS*/
 
 #include "header.h"
@@ -11,34 +13,36 @@ int main(){
   system("clear");//initially clears command line
   
   vector <Media*>* v = new vector<Media*>;//pointer of pointers
-  Movie* mv = new Movie(); 
-  cout << (*mv).getYear() << endl;
-  (*mv).setID(3);
-  (*mv).setYear(1980);
-  cout << (*mv).getYear() << endl;
-  cout << (*mv).getID() << endl;
-  v->push_back(mv);
   char input[30];
   for(int x = 0; x < 30; x++){
     input[x]= '\0';
   }
+  int count = 0;
   while(true){
-    cout << "\nWelcome to the media database. Please 'ADD', 'SEARCH'(prints matching Media units) or 'DELETE' a Media unit.\nType EXIT to quit the program.\n";
+    cout << "\n\nWelcome to the media database. Please 'ADD' or 'SEARCH'(prints matching Media units).\nType EXIT to quit the program.\n";
     cin.clear();
     cin.sync();//cleans cin
+	if(count != 0){
+		//cin.ignore();
+	}
+	
     cin.getline(input, 30);
     translateMove(input, v);
+	
+	//cout << v->at(1)->getTitle();
 
+	
+	count++;
   }
   
 }
 
-int translateMove(char *in, vector <Media*>* v){
+int translateMove(char *in, vector <Media*>* v){//converts input into do things
   bool running = true;
-  char newIn [200];
-  int mType = 0;
-  int tmpInt = 0;
-  int tInt = 0;
+  char* newIn = new char[200];//old thing that is now stuck into program, had to make new char* arr for each input
+  int mType = 0;//media type
+  int tmpInt = 0;//int that is used to store ints until they are placed into class
+  int tInt = 0;//used to to do the search one, not sure why this is here
   
   if(strcasecmp(in, "exit") == 0){
     exit(1);//quits program
@@ -56,36 +60,34 @@ int translateMove(char *in, vector <Media*>* v){
 		cout << "Enter the Title: ";
 		cin.ignore();//SKIPS GETLINE OTHERWISE!!
 		cin.getline(newIn, 200);
-		char *t = newIn;
-		vg->setTitle(t);
+		char *t = new char[200];
+		vg->setTitle(newIn);
 		vg->setID(1);
 
 		cout << "\nEnter the year of release: ";
-		scanf ("%d",&tmpInt);
-		vg->setYear(tmpInt);
+		scanf ("%d",&tmpInt);//scans input into the location of the tmpInt
+		vg->setYear(tmpInt);//places it in the vec tor
 
 		cout << "\nEnter the publisher: ";
-		cin.ignore();
-		cin.getline(newIn, 200);
-		t = newIn;
+		cin.ignore();//makes this stupid language not skip my input lines
+		cin.getline(t, 200);
 		vg->setPublisher(t);
 
 		cout << "\nEnter the rating(x/10 | INT)";
-		scanf("%d", &tmpInt);
-		vg->setRating(tmpInt);
+		scanf("%d", &tmpInt);//not 100% sure why i can reuse the int storer but not the char arr one
+		vg->setRating(tmpInt);//maybe its the &, idk
 
 		cin.ignore();
-		(*v).push_back(vg);
+		(*v).push_back(vg);//pushes garbage class into garbage vector
       }else if(mType == 2){//Movie
 	
-		Movie * mv = new Movie();
+		Movie * mv = new Movie();//rest of these are pretty similar VideoGame
 		cout << "Movie:\n\n";
 
 		cout << "Enter the Title: ";
 		cin.ignore();
 		cin.getline(newIn, 200);
-		char *t = newIn;
-		mv->setTitle(t);
+		mv->setTitle(newIn);
 		mv->setID(3);
 
 		cout << "\nEnter the year of release: ";
@@ -94,8 +96,8 @@ int translateMove(char *in, vector <Media*>* v){
 
 		cout << "\nEnter the director: ";
 		cin.ignore();
-		cin.getline(newIn, 200); 
-		t = newIn;
+		char *t = new char[200];
+		cin.getline(t, 200); 
 		mv->setDirector(t);
 
 		cout << "\nEnter the rating(x/10 | INT)";
@@ -117,32 +119,36 @@ int translateMove(char *in, vector <Media*>* v){
 		cout << "Enter the Title: ";
 		cin.ignore();
 		cin.getline(newIn, 200);
-		char *t = newIn;
-		s->setTitle(t);
+		char *t = new char[200];
+		s->setTitle(newIn);
 		s->setID(2);
 
 		cout << "\nEnter the year of release: ";
 		scanf ("%d",&tmpInt);
 		s->setYear(tmpInt);
+		
+		cout << "\nEnter the duration(minutes): ";
+		scanf ("%d",&tmpInt);
+		s->setDuration(tmpInt);
 
 		cout << "\nEnter the artist: ";
 		cin.ignore();
-		cin.getline(newIn, 200);
-		t = newIn;
+		cin.getline(t, 200);
 		s->setArtist(t);
 
 		cout << "\nEnter the publisher: ";
-		cin.ignore();
-		cin.getline(newIn, 200);
-		s->setPublisher(newIn);
+		//cin.ignore();
+		char* c1 = new char[200];
+		cin.getline(c1, 200);
+		s->setPublisher(c1);
 		(*v).push_back(s);
       }
     }while(mType != 1 && mType != 2 && mType != 3);
-  }else if(strcasecmp(in, "search") == 0){
+  }else if(strcasecmp(in, "search") == 0){//searches for items in the vec tor
 		
-	while(tInt != 1 && tInt != 2){
+	while(tInt != 1 && tInt != 2){//This actually works!
 	  
-		cout << "\nWould you like to search for a Title(1) or a Year(2)?: ";
+		cout << "\nWould you like to search for a Title(1) or a Year(2)?: ";//who knows
 		scanf("%d", &tInt);
 		if(tInt == 1){//search by title
 		
@@ -170,7 +176,7 @@ int translateMove(char *in, vector <Media*>* v){
 			}
 		}
 		
-			}else if(tInt == 2){
+			}else if(tInt == 2){//year
 				int year = 0;
 				cout << "\nInput the year: ";
 				cin.ignore();
@@ -183,9 +189,9 @@ int translateMove(char *in, vector <Media*>* v){
 						
 						
 						if(tmp2 == 1){//Videogame
-						  cout << "Videogame: " << ((*it)->getTitle());
-						  cout << "/ Released in "; 
-						  cout << ((*it)->getYear()); 
+						  cout << "\nVideogame: " << ((*it)->getTitle());//these were used to bug fix
+						  cout << "/ Released in "; //thats why they are spread out
+						  cout << ((*it)->getYear()); //apparently my default constructors sucked
 						  cout << "/ Published by ";
 						  cout << ((*it)->getPublisher()); 
 						  cout << "/ Rated ("; 
@@ -193,7 +199,7 @@ int translateMove(char *in, vector <Media*>* v){
 						  cout << "/10)";
 						  
 						}else if(tmp2 == 2){//Song
-						  cout << "Song: ";
+						  cout << "\nSong: ";
 						  cout << ((*it)->getTitle()); 
 						  cout << "/ Released in "; 
 						  cout << ((*it)->getYear()); 
@@ -207,18 +213,9 @@ int translateMove(char *in, vector <Media*>* v){
 						  
 						}else if(tmp2 == 3){//Movie
 						  
-						  char* c1 =(char *) malloc(200);
-						  cout << "ERROR4\n";
-						  //strcpy(c1, ((*it)->getTitle())); 
-						  
-						  char* c2 = (char *) malloc(100);
-						  //strcpy(c2, ((*it)->getDirector()));
-						  
-						  //char* c3;
-						  cout << "Movie: "; 
-						  cout << "ERROR4\n";
+
+						  cout << "\nMovie: "; 
 						  cout << ((*it)->getTitle()); 
-						  cout << "ERROR5\n";
 						  cout << "/ Released in "; 
 						  cout << ((*it)->getYear()); 
 						  cout << "/ Directed by "; 
